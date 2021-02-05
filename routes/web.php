@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\OverlayController;
 
 
 
@@ -20,4 +20,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user', function () { echo "Hello World."; });
+Route::get('/overlay/view/{code}', [OverlayController::class, 'codeView']);
+Route::get('/overlay/generate/{bottom}/{top}', [OverlayController::class, 'codeGenerate']);
