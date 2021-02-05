@@ -20,5 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/overlay/', [OverlayController::class, 'landing']);
 Route::get('/overlay/view/{code}', [OverlayController::class, 'codeView']);
 Route::get('/overlay/generate/{bottom}/{top}', [OverlayController::class, 'codeGenerate']);

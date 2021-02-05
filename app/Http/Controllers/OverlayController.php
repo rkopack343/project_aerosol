@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\View;
 class OverlayController extends Controller
 {
 
+	public function landing() {
+
+		return View::make('overlaycontroller.landing');
+	}
+
 	public function codeView($code) {
 
 		$data = json_decode(base64_decode($code),true);
