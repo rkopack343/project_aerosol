@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 
@@ -24,7 +25,12 @@ class OverlayController extends Controller
 			]);
 	}
 
-	public function codeGenerate($bottom,$top) {
+	public function codeGenerate(Request $request) {
+
+		$bottom = $request->input('bottom');
+		$top = $request->input('top');
+
+
 		$urlBottom = "https://i.imgur.com/$bottom.jpg";
 		$urlTop = "https://i.imgur.com/$top.jpg";
 

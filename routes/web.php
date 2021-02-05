@@ -21,5 +21,5 @@ Route::get('/', function () {
 });
 
 Route::get('/overlay/', [OverlayController::class, 'landing']);
-Route::get('/overlay/view/{code}', [OverlayController::class, 'codeView']);
-Route::get('/overlay/generate/{bottom}/{top}', [OverlayController::class, 'codeGenerate']);
+Route::get('/overlay/view/{code}', [OverlayController::class, 'codeView'])->name('overlay.view');
+Route::post('/overlay/generate/', [OverlayController::class, 'codeGenerate'])->name('overlay.generate');
