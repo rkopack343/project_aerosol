@@ -27,12 +27,8 @@ class OverlayController extends Controller
 
 	public function codeGenerate(Request $request) {
 
-		$bottom = $request->input('bottom');
-		$top = $request->input('top');
-
-
-		$urlBottom = "https://i.imgur.com/$bottom.jpg";
-		$urlTop = "https://i.imgur.com/$top.jpg";
+		$urlBottom = $request->input('bottom');
+		$urlTop = $request->input('top');
 
 		$data = [];
 		$data['urlBottom'] = $urlBottom;
