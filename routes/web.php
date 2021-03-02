@@ -16,6 +16,11 @@ use App\Http\Controllers\OverlayController;
 |
 */
 
+/**
+ * TODO
+ * Route::view('/{path?}', 'app');
+ */
+
 Route::get('/', function () {
     return view('welcome');
 });
