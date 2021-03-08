@@ -10,10 +10,12 @@ use \Aerosol\Aero as Aero;
 class AeroManager {
 
 	public static function makeFromStoredData(Database $dbn, string $key) : Aero|null {
-		// Get information from Database
-		// Parse into Aero class
-		$bg = new Image();
-		$fg = new Image();
+		// TODO: Get stored JSON data from Database
+		$decodedData = json_decode($key,true);
+
+		// TODO: Clean this up
+		$bg = new Image($decodedData['bgURL'],new \Aerosol\Helper\PlaneCoordinates($decodedData['bgX'],$decodedData['bgY']),$decodedData['bgRotation'],$decodedData['bgOpacity']);
+		$fg = new Image($decodedData['fgURL'],new \Aerosol\Helper\PlaneCoordinates($decodedData['fgX'],$decodedData['fgY']),$decodedData['fgRotation'],$decodedData['fgOpacity']);
 
 		return new Aero($bg,$fg);
 	}

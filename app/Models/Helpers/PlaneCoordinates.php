@@ -8,7 +8,6 @@ namespace Aerosol\Helper;
  * @param string|int $x		The X position of the object
  * @param string|int $y 	The Y position of the object
  *
- *
  */
 final class PlaneCoordinates implements \JsonSerializable {
 	private $x,$y;
