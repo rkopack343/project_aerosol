@@ -7,9 +7,9 @@ class Database {
 	private static $dbh = null;
 
 	public static function init() {
-		$filePath = "temp.db";
+		$filePath = "aero.db";
 
-		//self::$dbh = new PDO("sqlite:$filePath");
+		self::$dbh = new \PDO("sqlite:$filePath");
 	}
 
 	public static function get() { return self::$dbh; }

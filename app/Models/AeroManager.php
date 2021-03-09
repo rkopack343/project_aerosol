@@ -5,27 +5,72 @@ namespace Aerosol;
 use \Aerosol\Helper\Database as Database;
 use \Aerosol\Helper\Image as Image;
 use \Aerosol\Aero as Aero;
+use RuntimeException;
 
+final class AeroManager {
 
-class AeroManager {
+	const bgURLKey = "bgURL";
+	const bgXPosKey = "bgX";
+	const bgYPosKey = "bgY";
+	const bgRotationKey = "bgRotation";
+	const bgOpacityKey = "bgOpacity";
+
+	const fgURLKey = "fgURL";
+	const fgXPosKey = "fgX";
+	const fgYPosKey = "fgY";
+	const fgRotationKey = "fgRotation";
+	const fgOpacityKey = "fgOpacity";
 
 	public static function makeFromStoredData(Database $dbn, string $key) : Aero|null {
 		// TODO: Get stored JSON data from Database
 		$decodedData = json_decode($key,true);
 
-		// TODO: Clean this up
-		$bg = new Image($decodedData['bgURL'],new \Aerosol\Helper\PlaneCoordinates($decodedData['bgX'],$decodedData['bgY']),$decodedData['bgRotation'],$decodedData['bgOpacity']);
-		$fg = new Image($decodedData['fgURL'],new \Aerosol\Helper\PlaneCoordinates($decodedData['fgX'],$decodedData['fgY']),$decodedData['fgRotation'],$decodedData['fgOpacity']);
+		$bg = new Image($decodedData[self::bgURLKey],
+						new \Aerosol\Helper\PlaneCoordinates($decodedData[self::bgXPosKey],$decodedData[self::bgYPosKey]),
+						$decodedData[self::bgRotationKey],
+						$decodedData[self::bgOpacityKey]);
+
+		$fg = new Image($decodedData[self::fgURLKey],
+						new \Aerosol\Helper\PlaneCoordinates($decodedData[self::fgXPosKey],$decodedData[self::fgYPosKey]),
+						$decodedData[self::fgOpacityKey],
+						$decodedData[self::bgURLKey]);
 
 		return new Aero($bg,$fg);
 	}
 
-	public static function makeFromUserInput($params) : Aero|null {
-		// Get BG info
-		$bg = new Image();
+	public static function makeFromUserInput($params) : Aero {
+		// TODO: Reduce code duplication in this function.
 
-		// Get FG Info
-		$fg = new Image();
+		// Get BG info
+		try {
+			$bgURL = $params[self::bgURLKey] ?? null;
+			$bgCoords = new \Aerosol\Helper\PlaneCoordinates($params[self::bgXPosKey],$params[self::bgYPosKey]);
+			$bgRotation = $params[self::bgRotationKey] ?? null;
+			$bgOpacity = $params[self::bgOpacityKey] ?? null;
+
+			$bg = new Image($bgURL,$bgCoords,$bgRotation,$bgOpacity);
+		} catch ( \Exception $exception ) {
+			// TODO: Error Handling?
+			throw new RuntimeException("Unable to create Background Object from User Data.",$exception->getCode(),$exception);
+		} catch ( \Error $error ) {
+			throw new \Error("Error occured while creating Background Object from User Data.",$error->getCode(),$error);
+		}
+
+		//Get FG Info
+		try {
+			$fgURL = $params[self::fgURLKey] ?? null;
+			$fgCoords = new \Aerosol\Helper\PlaneCoordinates($params[self::fgXPosKey],$params[self::fgYPosKey]);
+			$fgRotation = $params[self::fgRotationKey] ?? null;
+			$fgOpacity = $params[self::fgOpacityKey] ?? null;
+
+			$fg = new Image($fgURL,$fgCoords,$fgRotation,$fgOpacity);
+		} catch ( \Exception $exception ) {
+			// TODO: Error Handling?
+			throw new RuntimeException("Unable to create Foreground Object from User Data.",$exception->getCode(),$exception);
+		} catch ( \Error $error ) {
+			throw new \Error("Error occured while creating Foreground Object from User Data.",$error->getCode(),$error);
+		}
+
 		return new Aero($bg,$fg);
 	}
 
