@@ -22,7 +22,17 @@ Create a website that allows user to overlay a picture of an object on top of a 
 ## Stretch Goals
 
 
+## TODO
+
+1. Figure out how to interface with a database using Laravel
+1. Do a test run with given parameters to make sure the backend logic works correctly
+1. Figure out how to get pictures to display, move, and rotate.
+	- oh I might need scaling here so if I do it will be a good test of migration (database or otherwise)
+1. Front end...all of it.
+
+
 ## Aspirations
+1. Right now the database schema has everything saved in a jsonblob, maybe a more direct schema with a DAO would be better?
 
 
 ## Notes to Self
