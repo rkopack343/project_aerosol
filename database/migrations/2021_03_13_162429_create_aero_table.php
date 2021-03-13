@@ -14,9 +14,11 @@ class CreateAeroTable extends Migration
     public function up()
     {
         Schema::create('aero', function (Blueprint $table) {
-            $table->id('key');
+			$table->string('key');
 			$table->jsonb('data');
             $table->timestamps();
+
+			$table->primary('key');
         });
     }
 

@@ -12,6 +12,12 @@ class OverlayController extends Controller
 {
 
 	public function test() {
+
+		$test = new Aero;
+		$test->key = "Giant Test Key";
+		$test->data = "{'Like something else'}";
+		$test->save();
+
 		foreach( Aero::all() as $aero ) {
 			echo $aero->key;
 		}
