@@ -25,20 +25,29 @@ Create a website that allows user to overlay a picture of an object on top of a 
 ## TODO
 
 1. Figure out how to interface with a database using Laravel
+1. Right now the database schema has everything saved in a jsonblob, maybe a more direct schema with a DAO would be better?
+	- I think this is the better path to take, after all.
 1. Do a test run with given parameters to make sure the backend logic works correctly
-1. Figure out how to get pictures to display, move, and rotate.
+1. Figure out how to get pictures to display, move, and rotate from user input in javascript
 	- oh I might need scaling here so if I do it will be a good test of migration (database or otherwise)
-1. Front end...all of it.
+1. Figure out how to send all of that data floating in javascript to the API
+1. ???
+1. Profit
 
 
 ## Aspirations
-1. Right now the database schema has everything saved in a jsonblob, maybe a more direct schema with a DAO would be better?
+
 
 
 ## Notes to Self
 
 1. Don't try to do things outside of the laravel environment suite. Just go with the flow and do it how it wants you to do it.
 1. php artisan migrate
-	- Runs migration on the database. Multiple commands packed in here like migrate:rollback to roll everything background
+	- Runs migration on the database. Multiple commands packed in here like migrate:rollback to roll everything back to try again.
 1. php artisan make:migration <description>
-	- Creats a database migration script and tries to guess what you're doing. See https://laravel.com/docs/8.x/migrations for more docs
+	- Creats a database migration script and tries to guess what you're doing.
+	- Database migration scripts have an up() (forward) and down() (reverse) that need to be filled out. Create and Destroy!
+	- https://laravel.com/docs/8.x/migrations
+1. php artisan db:seed
+	- Seeds the database by looking at \database\seeders\DataBaseSeeder.php and calling the run() function. This allows you to populate a database!
+	- https://laravel.com/docs/8.x/seeding
