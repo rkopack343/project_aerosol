@@ -1,7 +1,7 @@
 <?php
-namespace Aerosol\Helper;
+namespace App\Models\Aerosol\Helpers;
 
-use Aerosol\Helper\PlaneCoordinates as Coordinates;
+use App\Models\Aerosol\Helpers\PlaneCoordinates as Coordinates;
 
 
 /**

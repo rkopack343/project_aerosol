@@ -1,6 +1,6 @@
 <?php
 
-namespace Aerosol\Helper;
+namespace App\Models\Aerosol\Helpers;
 
 /**
  * Helper class to contain Coordinates on a 2d plane. When called as a string, returns an json_encoded string with an 'x' and 'y' key

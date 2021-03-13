@@ -1,10 +1,11 @@
 <?php
 
-namespace Aerosol;
+namespace App\Models\Aerosol\Helpers;
 
-use \Aerosol\Helper\Database as Database;
-use \Aerosol\Helper\Image as Image;
-use \Aerosol\Aero as Aero;
+use App\Models\Aerosol\Helpers\Database as Database;
+use App\Models\Aerosol\Helpers\Image as Image;
+use App\Models\Aerosol\Aero as Aero;
+use App\Models\Aerosol\Helpers\PlaneCoordinates as PlaneCoordinates;
 use RuntimeException;
 
 final class AeroManager {
@@ -26,12 +27,12 @@ final class AeroManager {
 		$decodedData = json_decode($key,true);
 
 		$bg = new Image($decodedData[self::bgURLKey],
-						new \Aerosol\Helper\PlaneCoordinates($decodedData[self::bgXPosKey],$decodedData[self::bgYPosKey]),
+						new PlaneCoordinates($decodedData[self::bgXPosKey],$decodedData[self::bgYPosKey]),
 						$decodedData[self::bgRotationKey],
 						$decodedData[self::bgOpacityKey]);
 
 		$fg = new Image($decodedData[self::fgURLKey],
-						new \Aerosol\Helper\PlaneCoordinates($decodedData[self::fgXPosKey],$decodedData[self::fgYPosKey]),
+						new PlaneCoordinates($decodedData[self::fgXPosKey],$decodedData[self::fgYPosKey]),
 						$decodedData[self::fgOpacityKey],
 						$decodedData[self::bgURLKey]);
 
@@ -44,7 +45,7 @@ final class AeroManager {
 		// Get BG info
 		try {
 			$bgURL = $params[self::bgURLKey] ?? null;
-			$bgCoords = new \Aerosol\Helper\PlaneCoordinates($params[self::bgXPosKey],$params[self::bgYPosKey]);
+			$bgCoords = new PlaneCoordinates($params[self::bgXPosKey],$params[self::bgYPosKey]);
 			$bgRotation = $params[self::bgRotationKey] ?? null;
 			$bgOpacity = $params[self::bgOpacityKey] ?? null;
 
@@ -59,7 +60,7 @@ final class AeroManager {
 		//Get FG Info
 		try {
 			$fgURL = $params[self::fgURLKey] ?? null;
-			$fgCoords = new \Aerosol\Helper\PlaneCoordinates($params[self::fgXPosKey],$params[self::fgYPosKey]);
+			$fgCoords = new PlaneCoordinates($params[self::fgXPosKey],$params[self::fgYPosKey]);
 			$fgRotation = $params[self::fgRotationKey] ?? null;
 			$fgOpacity = $params[self::fgOpacityKey] ?? null;
 
