@@ -24,3 +24,11 @@ Create a website that allows user to overlay a picture of an object on top of a 
 
 ## Aspirations
 
+
+## Notes to Self
+
+1. Don't try to do things outside of the laravel environment suite. Just go with the flow and do it how it wants you to do it.
+1. php artisan migrate
+	- Runs migration on the database. Multiple commands packed in here like migrate:rollback to roll everything background
+1. php artisan make:migration <description>
+	- Creats a database migration script and tries to guess what you're doing. See https://laravel.com/docs/8.x/migrations for more docs
