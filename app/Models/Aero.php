@@ -2,8 +2,15 @@
 namespace Aerosol;
 
 use Aerosol\Helper\Image as Image;
+use Illuminate\Database\Eloquent\Model;
 
-class Aero implements \JsonSerializable {
+class Aero extends Model implements \JsonSerializable {
+
+		protected $table = 'aero';
+		protected $primaryKey = 'key';
+		protected $keyType ='string';
+		public $incrementing = 'false';
+
 		private Image $background,$foreground;
 
 
