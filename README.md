@@ -51,3 +51,5 @@ Create a website that allows user to overlay a picture of an object on top of a 
 1. php artisan db:seed
 	- Seeds the database by looking at \database\seeders\DataBaseSeeder.php and calling the run() function. This allows you to populate a database!
 	- https://laravel.com/docs/8.x/seeding
+1. php artisan serve
+	- Don't use ./vendor/bin/sail up but instead serve from artisan. This lets xdebug work for reasons :spooky:

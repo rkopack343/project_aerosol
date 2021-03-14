@@ -1,7 +1,6 @@
 <?php
 namespace App\Models\Aerosol;
 
-use Aerosol\Helper\Image as Image;
 use Illuminate\Database\Eloquent\Model;
 
 class Aero extends Model implements \JsonSerializable {

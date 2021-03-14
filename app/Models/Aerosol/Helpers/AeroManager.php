@@ -36,7 +36,7 @@ final class AeroManager {
 						$decodedData[self::fgOpacityKey],
 						$decodedData[self::bgURLKey]);
 
-		return new Aero($bg,$fg);
+		//return new Aero($bg,$fg);
 	}
 
 	public static function makeFromUserInput($params) : Aero {
@@ -72,7 +72,7 @@ final class AeroManager {
 			throw new \Error("Error occured while creating Foreground Object from User Data.",$error->getCode(),$error);
 		}
 
-		return new Aero($bg,$fg);
+		//return new Aero($bg,$fg);
 	}
 
 }

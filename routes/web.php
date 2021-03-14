@@ -15,11 +15,7 @@ use App\Http\Controllers\OverlayController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-/**
- * TODO
- * Route::view('/{path?}', 'app');
- */
+Route::get('/test/', [OverlayController::class,'test']);
 
 
 Route::get('/overlay/', [OverlayController::class, 'landing']);

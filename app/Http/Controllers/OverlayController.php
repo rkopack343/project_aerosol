@@ -11,17 +11,9 @@ use \App\Models\Aerosol\Aero as Aero;
 class OverlayController extends Controller
 {
 
-	/*public function test() {
-
-		foreach( Aero::all() as $aero ) {
-			echo $aero->key; echo PHP_EOL;
-			echo "data:";
-			echo $aero->data; echo PHP_EOL;
-			echo "json:";
-			echo $aero->getParsedJson(); echo PHP_EOL;
-			echo PHP_EOL;
-		}
-	}*/
+	public function test() {
+		echo phpinfo();
+	}
 
 	public function landing() {
 
@@ -29,14 +21,14 @@ class OverlayController extends Controller
 	}
 
 	public function codeView($code) {
-
-		$data = json_decode(base64_decode($code),true);
+		// Retrieve the code from database;
+		$imageData = Aero::where('key',$code)->get();
 
 		return View::make('overlaycontroller.codeView',
-			[
-				'code' => $code,
-				'data' => $data
-			]);
+		[
+			'code' => $code,
+			'data' => $imageData
+		]);
 	}
 
 	public function codeGenerate(Request $request) {
