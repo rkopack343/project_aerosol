@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use \App\Models\Aerosol\Aero as Aero;
 
 
@@ -22,12 +22,12 @@ class OverlayController extends Controller
 
 	public function codeView($code) {
 		// Retrieve the code from database;
-		$imageData = Aero::where('key',$code)->get();
+		$aeroModel = Aero::where('uuidKey',$code)->firstOrFail();
 
 		return View::make('overlaycontroller.codeView',
 		[
 			'code' => $code,
-			'data' => $imageData
+			'model' => $aeroModel
 		]);
 	}
 
@@ -40,10 +40,16 @@ class OverlayController extends Controller
 		$data['urlBottom'] = $urlBottom;
 		$data['urlTop'] = $urlTop;
 
-		$json = json_encode($data);
-		$baseEncoded = base64_encode($json);
+		$newAero = new Aero;
+		$newAero->uuidKey = Str::uuid();
+		$newAero->data = $data;
+		$newAero->save();
 
-		return View::make('overlaycontroller.codeGenerate',['code' => $baseEncoded]);
+		return View::make('overlaycontroller.codeGenerate',
+		[
+			'code' => $newAero->uuidKey,
+			'data' => $newAero
+		]);
 	}
 
 }

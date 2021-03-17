@@ -9,17 +9,17 @@ use Illuminate\Support\Str;
 
 class AeroSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 		$aero = new Aero;
-		$aero->key = Str::uuid();
+		$aero->uuidKey = Str::uuid();
 		$aero->data = "{'fg' => 'test', 'bg' => 'test2'}";
 
 		$aero->save();
-    }
+	}
 }

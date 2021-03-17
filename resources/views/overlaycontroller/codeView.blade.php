@@ -4,25 +4,25 @@
 		<style>
 			.bottom
 			{
-			  position: relative;
-			  top: 0;
-			  left: 0;
-			  opacity: 0.5
+				position: relative;
+				top: 0;
+				left: 0;
+				opacity: 0.5
 			}
 			.top
 			{
-			  position: absolute;
-			  top: 0;
-			  left: 0;
-			  opacity: 1;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 1;
 			}
-		  </style>
+		</style>
 	</head>
 	<body>
 		<div style="position: relative; left: 0; top: 0;">
-			<img src='{{ $data['urlTop'] }}' class=top>
+			<img src='{{ $model->data['urlTop']}}' class=top>
 
-			<img src='{{ $data['urlBottom'] }}' class=bottom>
+			<img src='{{ $model->data['urlBottom'] }}' class=bottom>
 		</div>
 	</body>
 

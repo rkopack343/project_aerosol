@@ -6,29 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAeroTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('aero', function (Blueprint $table) {
-			$table->string('key');
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('aero', function (Blueprint $table) {
+			$table->id();
+			$table->string('uuidKey');
 			$table->jsonb('data');
-            $table->timestamps();
+			$table->timestamps();
+		});
+	}
 
-			$table->primary('key');
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('aero');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('aero');
+	}
 }
